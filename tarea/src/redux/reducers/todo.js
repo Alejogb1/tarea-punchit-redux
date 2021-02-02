@@ -1,26 +1,23 @@
+import {actions} from "./../actions/todo"
+
 const initalState = {
-    ...state,
-    todo : {
-        title: "",
-        description: "Esto es una tarea"
-    }
+    todos: [
+        {id: 1, description: "Esto es una tarea", status: false}
+    ]
 }
-functioadn () {
-    switch (action.type) {
-        case ADD_TOTO:
-            return {
-                 ...state,
-                title: action.payload.title,
-                description: action.payload.description
-            }
-        case DELETE_TODO:
+export default function todoReducer(state = initalState){
+    switch(action.type) {
+        case actions.ADD_TODO:
             return {
                 ...state,
-               title: action.payload.title,
-               description: action.payload.description
-           }
-        default
-            return state;
+                todos:  [...state.todos , action.payload.todo ]
+            }
+        case actions.DELETE_TODO:
+            return {
+                ...state,
+                todos:  state.todos.filter(todo => todo.id !== action.payload.id),
+            };
+        defualt:
+            return state
     }
 }
-export function functioadn()
