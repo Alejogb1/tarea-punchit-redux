@@ -5,7 +5,7 @@ const addTodo = ({dispatch}) =>  {
     function addTask (e) {
         e.preventDefault();
         const [description] = e.target
-        obj = {
+        const obj = {
             id: nanoid(),
             description: description.value,
             status: false
@@ -20,10 +20,9 @@ const addTodo = ({dispatch}) =>  {
             </Form>
         </Col>
     )
-    
+}
 const mapStateToProps = (state) => {
     return state;
   };
   
   export default connect(mapStateToProps)(addTodo);
-}
