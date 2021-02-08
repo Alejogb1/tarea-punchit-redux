@@ -2,7 +2,7 @@ import {Row, Colm, Form} from "react-bootstrap"
 import {connect} from "react-redux"
 import { actions } from "../redux/actions/todo"
 
-const Todo = ({todo: {todos}}) => {
+const Todo = ({dispatch, todo: {todos}}) => {
     console.log(todos)
     const deleteActivity =  (id) => {
         dispatch({ type: actions.DELETE_TODO, payload: {id}})
