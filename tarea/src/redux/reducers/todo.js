@@ -1,10 +1,9 @@
 import {actions} from "./../actions/todo"
+import { stockData } from "../../data"
 
 const initialState = {
-    autor: "Tu mama",
-    todos: [
-        {id: 1, description: "Esto es una tarea", status: false}
-    ]
+     data: stockData
+    
 }
 export default function todoReducer(state = initialState, action) {
     console.log(action);
@@ -12,13 +11,13 @@ export default function todoReducer(state = initialState, action) {
       case actions.ADD_TODO:
         return {
           ...state,
-          todos: [action.payload.todo, ...state.todos],
+          data: [action.payload.todo, ...state.data],
         };
   
       case actions.DELETE_TODO:
         return {
           ...state,
-          todos: state.todos.filter((todo) => todo.id !== action.payload.id),
+          data: state.data.filter((todo) => todo.id !== action.payload.id),
         };
       default:
         return state;
