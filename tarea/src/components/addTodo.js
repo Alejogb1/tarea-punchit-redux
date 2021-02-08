@@ -1,13 +1,16 @@
 import {Col, Form} from "react-bootstrap"
-
+import {connect} from "react-redux"
+import {nanoid} from "nanoid/non-secure"
 const addTodo = ({dispatch}) =>  {
     function addTask (e) {
         e.preventDefault();
-        [description] 
+        const [description] = e.target
         obj = {
-            title: e.target, 
+            id: nanoid(),
+            description: description.value,
+            status: false
         }
-        dispatch: [todo, actions.payload.ADD_TODO]
+        dispatch({type: "ADD_TODO", payload: {todo: obj} })
     }
     return (
         <Col>
@@ -17,4 +20,10 @@ const addTodo = ({dispatch}) =>  {
             </Form>
         </Col>
     )
+    
+const mapStateToProps = (state) => {
+    return state;
+  };
+  
+  export default connect(mapStateToProps)(addTodo);
 }
