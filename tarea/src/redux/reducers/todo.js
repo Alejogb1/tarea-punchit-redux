@@ -1,20 +1,19 @@
 import {actions} from "./../actions/todo"
 import { stockData } from "../../data"
 
-const initialState = {
+export const initialState = {
      data: stockData
     
 }
 export default function todoReducer(state = initialState, action) {
-    console.log(action);
     switch (action.type) {
-      case actions.ADD_TODO:
+      case actions.ADD_STOCK:
+        console.log("action payload: ", action.payload)
         return {
-          ...state,
-          data: [action.payload.todo, ...state.data],
+          data: [action.payload],
         };
   
-      case actions.DELETE_TODO:
+      case actions.DELETE_STOCK:
         return {
           ...state,
           data: state.data.filter((todo) => todo.id !== action.payload.id),
